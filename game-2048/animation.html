@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> </title>
+  <meta charset="utf-8" />
+  <link rel="stylesheet"  href="animation.css"/>
+  <script>
+  //将d1的left属性+1px
+		 //获得元素的css属性：2种
+		 //1.仅获得内联样式：设置内联样式：elem.style.属性名
+		 //2.获得最终应用到当前元素的所有样式属性：
+		 //var style=elem.currentStyle或getComputedStyle(elem);
+		 //          IE8                   IE9或其他
+    function $(id){
+		return document.getElementById("d1");
+	}
+	var  target1=800;
+	var  target2=700;
+	var  target3=600;//目标位置
+	var  target4=500;
+	var  steps=100;//总步数
+	var  duration=5000;//总时间ms
+	// 每步的时间间隔
+	var interval=duration/steps;
+	//每步的步长
+	
+	function moveStep(){
+	   var left=parseInt(getComputedStyle($("d1")).left);
+	   $("d1").style.left=left+step+"px";
+	   steps--;
+	   steps==0&&(clearInterval(timer),steps=100);
+	
+	}
+	var timer=null;
+	var divStep=[(target1-100)/steps,
+	         (target2-100)/steps,
+	         (target3-100)/steps,
+	         (target4-100)/steps];
+
+     window.onload=function(){
+		 timer=setInterval(moveStep,interval);
+	 }
+		 
+  
+  </script>
+ </head>
+
+ <body>
+   <div id="d1"></div>
+   <div id="d2"></div>
+   <div id="d3"></div>
+   <div id="d4"></div>
+   
+    
+  
+ </body>
+</html>
